@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
+import styles from "../../styles/search";
 
 const JobDetails = () => {
     const params = useSearchParams();
@@ -14,7 +15,7 @@ const JobDetails = () => {
 
 
     const [refreshing, setRefreshing] = useState(false);
-const onRefresh = () => {}
+    const onRefresh = () => {}
 
     return (
         <SafeAreaView style={{ flew:1, backgroundColor: COLORS.lightWhite}}>
@@ -41,9 +42,27 @@ const onRefresh = () => {}
                 }}
             />
             <>
-            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} / >}>
+            <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+            
+            {isLoading ?(
+                <ActivityIndicator size="large" color={COLORS.primary} />
+            ) : error ? (
+                <Text> Something went wrong</Text>
+            ) : (
+                <View style={{ padding:SIZES.medium, paddingBotton: 100 }}>
+                    <Company
+                    companyLogo={data[0].employer_logo}
+                    jobTitle={data[0].job_title}
+                    companyName={data[0].employer_name}
+                    Location={data[0].job_country}
+                    />
+                <JobsTabs
+                ></JobsTabs>
+                </View>
+            )
+            }
             </ScrollView>
-
+        
             </>
         
         </SafeAreaView>

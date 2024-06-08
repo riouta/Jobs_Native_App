@@ -7,17 +7,19 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 //import { isLoading } from 'expo-font'
 import useFetch from '../../../hook/useFetch';
 
+// Define the PopularJobs component
 const Popularjobs = () => {
-  const router = useRouter();
+  const router = useRouter(); // Initialize the router for navigation
   const { data, isLoading, error} = useFetch(
     'search', {
       query:'React developer',
       num_pages: 1 
     }
-  );
-  const [selectedJob, setSelectedJob] = useState();
-  const handleCardPress = (item) => {
+  ); // Fetch data using the useFetch hook
 
+  const [selectedJob, setSelectedJob] = useState(); // Define state for the selected job
+  const handleCardPress = (item) => {
+      // Handle card press
   }
   //console.log(data);
 

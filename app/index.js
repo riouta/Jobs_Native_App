@@ -1,12 +1,13 @@
+// Import necessary modules and components from React and React Native
 import { useState } from "react";
 import { View, Text, ScrollView, SafeAreaView } from "react-native";
 import { Stack, useRouter } from "expo-router";
 import { COLORS, SIZES, icons, images } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
 
-
+// Define the Home component
 const  Home = () => {
-    const router = useRouter();
+    const router = useRouter();// Initialize the router for navigation
 
 
     return (
@@ -30,9 +31,8 @@ const  Home = () => {
                     <Nearbyjobs />
 
                 </View>
-            
         </SafeAreaView>
     )
 }
 
-export default Home;
+export default Home;// Export the Home component as default

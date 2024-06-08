@@ -1,14 +1,17 @@
+// Import necessary modules
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
+// Custom hook to fetch data from an API
 const useFetch = (endpoint, query ) => {
+    // Define state variables
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     //const axios = require('axios');
-
-    
+      // Function to fetch data from the API
     const fetchData =async () => {
         setIsLoading(true);
         const options = {
@@ -24,14 +27,14 @@ const useFetch = (endpoint, query ) => {
             console.log('Fetching data with options:', options);
 
         try {
-            const response = await axios.request(options);
+            const response = await axios.request(options); // Make the API request
             console.log('API response:', response.data); // Log the entire response
-            setData(response.data.data);
+            setData(response.data.data);// Set the data state with the response data
 
         } catch (error) {
             console.error('API error:', error);
             setError(error);
-
+        // Handle different types of errors
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
@@ -51,6 +54,7 @@ const useFetch = (endpoint, query ) => {
             setIsLoading(false);
         }
     }
+    // Fetch data when the component mounts or when the endpoint/query changes
     useEffect(() => {
         fetchData();
     }, []);
@@ -59,6 +63,7 @@ const useFetch = (endpoint, query ) => {
         setIsLoading(true);
         fetchData();
     }
+    // Return the data, loading state, error state, and refetch function
     return {data, isLoading, error, refetch };
 
 }
