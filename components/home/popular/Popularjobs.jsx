@@ -9,15 +9,13 @@ import useFetch from '../../../hook/useFetch';
 
 const Popularjobs = () => {
   const router = useRouter();
-
-  const {data, isLoading, error} = useFetch(
+  const { data, isLoading, error} = useFetch(
     'search', {
       query:'React developer',
       num_pages: 1 
     }
   );
-  const [selectedJob, setSelectedJob] = useState()
-
+  const [selectedJob, setSelectedJob] = useState();
   const handleCardPress = (item) => {
 
   }
@@ -47,7 +45,7 @@ const Popularjobs = () => {
                 handleCardPress={handleCardPress}
               />
             )}
-            keyExtractor={item => item?.job_id} // Ensure unique key
+            keyExtractor={item => item?.job_id.toString()} // Ensure unique key
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
           />

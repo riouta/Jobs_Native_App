@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { View, Text, ScrollView, SafeAreaView } from "react-native";
 import { Stack, useRouter } from "expo-router";
-
 import { COLORS, SIZES, icons, images } from "../constants";
-
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
 
 
@@ -25,17 +23,14 @@ const  Home = () => {
                 headerTitle: ""
             }}
             />
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{
-                    flex: 1,
-                    padding: SIZES.medium
-                }}>
+            
+                <View style={{ flex: 1, padding: SIZES.medium }}>
                     <Welcome/>
                     <Popularjobs />
                     <Nearbyjobs />
 
                 </View>
-            </ScrollView>
+            
         </SafeAreaView>
     )
 }
