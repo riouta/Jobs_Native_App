@@ -42,3 +42,22 @@ The main entry point for the home screen of the application. It sets up the layo
 ```javascript
 
 ```
+
+Getting Started
+Clone the repository:
+
+sh
+Copier le code
+git clone https://github.com/yourusername/jobs-native-app.git
+cd jobs-native-app
+Install dependencies:
+
+sh
+Copier le code
+npm install
+Run the application:
+
+sh
+Copier le code
+expo start
+Ensure you have a working API key and endpoint in useFetch.js.
